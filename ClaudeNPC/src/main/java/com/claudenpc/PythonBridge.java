@@ -225,8 +225,81 @@ public class PythonBridge {
                 Material material = Material.valueOf(materialName);
                 block.setType(material);
 
-                // TODO: Handle block properties (facing, powered, etc.)
-                // JSONObject properties = (JSONObject) blockData.get("properties");
+                // Handle block properties (facing, powered, waterlogged, etc.)
+                JSONObject properties = (JSONObject) blockData.get("properties");
+                if (properties != null && block.getBlockData() instanceof org.bukkit.block.data.BlockData) {
+                    org.bukkit.block.data.BlockData blockData = block.getBlockData();
+
+                    // Handle directional blocks (facing)
+                    if (blockData instanceof org.bukkit.block.data.Directional) {
+                        String facingStr = (String) properties.get("facing");
+                        if (facingStr != null) {
+                            try {
+                                org.bukkit.block.BlockFace facing = org.bukkit.block.BlockFace.valueOf(facingStr.toUpperCase());
+                                ((org.bukkit.block.data.Directional) blockData).setFacing(facing);
+                            } catch (IllegalArgumentException e) {
+                                logger.warning("Invalid facing direction: " + facingStr);
+                            }
+                        }
+                    }
+
+                    // Handle powered blocks (redstone components)
+                    if (blockData instanceof org.bukkit.block.data.Powerable) {
+                        Object poweredObj = properties.get("powered");
+                        if (poweredObj != null) {
+                            boolean powered = poweredObj instanceof Boolean ? (Boolean) poweredObj :
+                                            Boolean.parseBoolean(poweredObj.toString());
+                            ((org.bukkit.block.data.Powerable) blockData).setPowered(powered);
+                        }
+                    }
+
+                    // Handle delay for repeaters
+                    if (blockData instanceof org.bukkit.block.data.type.Repeater) {
+                        Object delayObj = properties.get("delay");
+                        if (delayObj != null) {
+                            int delay = delayObj instanceof Long ? ((Long) delayObj).intValue() :
+                                       Integer.parseInt(delayObj.toString());
+                            ((org.bukkit.block.data.type.Repeater) blockData).setDelay(delay);
+                        }
+                    }
+
+                    // Handle comparator mode
+                    if (blockData instanceof org.bukkit.block.data.type.Comparator) {
+                        String modeStr = (String) properties.get("mode");
+                        if (modeStr != null) {
+                            try {
+                                org.bukkit.block.data.type.Comparator.Mode mode =
+                                    org.bukkit.block.data.type.Comparator.Mode.valueOf(modeStr.toUpperCase());
+                                ((org.bukkit.block.data.type.Comparator) blockData).setMode(mode);
+                            } catch (IllegalArgumentException e) {
+                                logger.warning("Invalid comparator mode: " + modeStr);
+                            }
+                        }
+                    }
+
+                    // Handle lit state (torches, lamps)
+                    if (blockData instanceof org.bukkit.block.data.Lightable) {
+                        Object litObj = properties.get("lit");
+                        if (litObj != null) {
+                            boolean lit = litObj instanceof Boolean ? (Boolean) litObj :
+                                         Boolean.parseBoolean(litObj.toString());
+                            ((org.bukkit.block.data.Lightable) blockData).setLit(lit);
+                        }
+                    }
+
+                    // Handle waterlogged state
+                    if (blockData instanceof org.bukkit.block.data.Waterlogged) {
+                        Object waterloggedObj = properties.get("waterlogged");
+                        if (waterloggedObj != null) {
+                            boolean waterlogged = waterloggedObj instanceof Boolean ? (Boolean) waterloggedObj :
+                                                 Boolean.parseBoolean(waterloggedObj.toString());
+                            ((org.bukkit.block.data.Waterlogged) blockData).setWaterlogged(waterlogged);
+                        }
+                    }
+
+                    // Apply updated block data
+                    block.setBlockData(blockData);
+                }
 
                 placedCount++;
 
