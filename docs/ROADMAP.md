@@ -77,7 +77,62 @@ public class SentimentAnalyzer {
 
 ---
 
-## v2.3.0 - Voice Integration
+## v2.3.0 - Neural Dream Weaving (Grok Collab)
+
+**Feature**: EEG/biosignal integration to weave player consciousness into gameplay
+
+> "Turn your daydreams into custom quests or biomes" - @grok
+
+### Concept
+
+```
+Player Biosignals (EEG/Wearables) → Neural Pattern Analysis → World Generation
+```
+
+### Implementation Ideas
+
+1. **Biosignal Input Sources**
+   - Muse headband (EEG)
+   - Apple Watch / Fitbit (heart rate, stress)
+   - Empatica E4 (electrodermal activity)
+
+2. **Dream Weaving Engine**
+   ```yaml
+   neural_weaving:
+     enabled: true
+     inputs:
+       - eeg_alpha_waves    # Relaxation state
+       - heart_rate_variance # Stress indicator
+       - skin_conductance   # Emotional arousal
+
+     world_responses:
+       high_stress:
+         - spawn_calming_biome: "cherry_grove"
+         - reduce_mob_spawns: 50%
+         - ambient_music: "peaceful"
+
+       creative_flow:
+         - generate_quest: "from_subconscious"
+         - unlock_hidden_area: true
+
+       daydreaming:
+         - morph_terrain: "dream_logic"
+         - npc_speaks_in_riddles: true
+   ```
+
+3. **Adaptive World Healing**
+   - Frustrated player → world becomes gentler
+   - Calm player → world offers challenges
+   - Creative state → procedural content generation
+
+### Research Partners Needed
+- Neuroscience / BCI experts
+- Wearable device developers
+- Ethics review for biosignal data
+
+---
+
+## v2.4.0 - Voice Integration
 
 - Text-to-speech for NPC responses
 - Speech-to-text for player input
@@ -85,7 +140,7 @@ public class SentimentAnalyzer {
 
 ---
 
-## v2.4.0 - Discord Rich Presence
+## v2.5.0 - Discord Rich Presence
 
 - Show current NPC interaction
 - Server status in Discord
