@@ -1,0 +1,8 @@
+[
+  {
+    "state": "idle",
+    "input": "Hello, NPC!",
+    "expected_output": "Greetings!"
+  },
+  {
+    "state": "broken

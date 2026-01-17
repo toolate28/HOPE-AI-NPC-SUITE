@@ -1,0 +1,17 @@
+[
+  {
+    "state": "idle",
+    "input": "Hello, NPC!",
+    "expected_output": "Greetings, traveler! How may I assist you today?"
+  },
+  {
+    "state": "quest_active",
+    "input": "I need help with my quest.",
+    "expected_output": "Ah yes, the quest to find the ancient artifact. Have you checked the eastern ruins?"
+  },
+  {
+    "state": "combat",
+    "input": "Attack!",
+    "expected_output": "En garde! Prepare to defend yourself!"
+  }
+]

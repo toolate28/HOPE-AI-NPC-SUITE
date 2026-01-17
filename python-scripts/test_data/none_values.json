@@ -1,0 +1,7 @@
+[
+  {
+    "state": null,
+    "input": "Hello, NPC!",
+    "expected_output": "Greetings!"
+  }
+]

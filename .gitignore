@@ -44,3 +44,11 @@ config.local.yml
 
 # PowerShell
 *.ps1.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/

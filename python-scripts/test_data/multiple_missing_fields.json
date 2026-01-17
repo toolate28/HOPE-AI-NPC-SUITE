@@ -1,0 +1,14 @@
+[
+  {
+    "state": "idle",
+    "input": "Hello, NPC!",
+    "expected_output": "Greetings!"
+  },
+  {
+    "input": "How are you?",
+    "expected_output": "I'm fine, thanks!"
+  },
+  {
+    "state": "quest_active"
+  }
+]

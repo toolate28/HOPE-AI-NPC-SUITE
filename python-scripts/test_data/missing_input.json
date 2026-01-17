@@ -1,0 +1,6 @@
+[
+  {
+    "state": "idle",
+    "expected_output": "Greetings, traveler!"
+  }
+]
