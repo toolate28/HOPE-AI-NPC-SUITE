@@ -1,0 +1,6 @@
+[
+  {
+    "input": "Hello, NPC!",
+    "expected_output": "Greetings, traveler!"
+  }
+]
